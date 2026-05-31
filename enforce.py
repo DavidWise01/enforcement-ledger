@@ -227,13 +227,13 @@ def main(argv=None):
     sub = p.add_subparsers(dest="cmd", required=True)
 
     sub.add_parser("init")
-    a = sub.add_parser("log"); a.add_argument("--entity",""); a.add_argument("--description",""); a.add_argument("--axiom",""); a.add_argument("--severity",default="medium")
-    a = sub.add_parser("remedy"); a.add_argument("--entity",""); a.add_argument("--remedy",""); a.add_argument("--violation-id","",dest="violation_id")
-    a = sub.add_parser("seal"); a.add_argument("--seal-id","",dest="seal_id"); a.add_argument("--description",""); a.add_argument("--entity","")
+    a = sub.add_parser("log"); a.add_argument("--entity",default=""); a.add_argument("--description",default=""); a.add_argument("--axiom",default=""); a.add_argument("--severity",default="medium")
+    a = sub.add_parser("remedy"); a.add_argument("--entity",default=""); a.add_argument("--remedy",default=""); a.add_argument("--violation-id",default="",dest="violation_id")
+    a = sub.add_parser("seal"); a.add_argument("--seal-id",default="",dest="seal_id"); a.add_argument("--description",default=""); a.add_argument("--entity",default="")
     sub.add_parser("list")
     sub.add_parser("verify")
     sub.add_parser("status")
-    a = sub.add_parser("export"); a.add_argument("--output","")
+    a = sub.add_parser("export"); a.add_argument("--output",default="")
 
     args = p.parse_args(argv)
     dispatch = {"init":cmd_init,"log":cmd_log,"remedy":cmd_remedy,"seal":cmd_seal,
